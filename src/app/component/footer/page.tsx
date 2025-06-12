@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Twitter, Heart } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -77,14 +77,6 @@ export default function Footer() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Twitter size={20} />
-              </motion.a>
-              <motion.a
-                href="mailto:fariamustaqim@gmail.com"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-indigo-500/20 transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Mail size={20} />
               </motion.a>
             </div>
           </div>
