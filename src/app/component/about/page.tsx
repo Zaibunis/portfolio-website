@@ -78,10 +78,11 @@ export default function About() {
           <div className="w-full lg:w-1/2">
             <motion.h1 className={`text-5xl font-bold mb-6 ${isDark ? 'text-white' : 'text-black'}`}>About Me</motion.h1>
             <motion.p className={`text-lg leading-relaxed ${isDark ? 'text-white/90' : 'text-black/90'}`}>
-              Hello! I'm <strong className="text-purple-500">Faria Mustaqim</strong>, a dedicated Front-End Developer with a love for creating smooth, responsive, and beautiful web applications using modern technologies like Next.js, React, and TypeScript. My journey in tech began with curiosity and has grown into a purposeful pursuit of innovation. I'm passionate about exploring areas like Agentic AI, Web3, and Cloud Computing to build intelligent and meaningful digital experiences.
-              <br /><br />
-              Currently, I'm a Computer Science student who thrives in collaborative environments and values the power of clean, elegant code. My projects reflect my enthusiasm for user-friendly interfaces and functional design. I'm always learning and aiming to push boundaries in modern web development. My goal is simple yet impactful — to use technology to improve lives, one project at a time.
-            </motion.p>
+  Hello! I&apos;m <strong className="text-purple-500">Faria Mustaqim</strong>, a dedicated Front-End Developer with a love for creating smooth, responsive, and beautiful web applications using modern technologies like Next.js, React, and TypeScript. My journey in tech began with curiosity and has grown into a purposeful pursuit of innovation. I&apos;m passionate about exploring areas like Agentic AI, Web3, and Cloud Computing to build intelligent and meaningful digital experiences.
+  <br /><br />
+  Currently, I&apos;m a Computer Science student who thrives in collaborative environments and values the power of clean, elegant code. My projects reflect my enthusiasm for user-friendly interfaces and functional design. I&apos;m always learning and aiming to push boundaries in modern web development. My goal is simple yet impactful — to use technology to improve lives, one project at a time.
+</motion.p>
+
           </div>
         </div>
 {/* Video Section */}
