@@ -10,7 +10,7 @@ export default function Home() {
   return (
    <div>
     
-    <Footer />
+    <Front />
    </div>
   );
 }
