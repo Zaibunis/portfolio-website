@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Moon, Sun, Github, Linkedin, Twitter } from 'lucide-react';
+import { Moon, Sun, Github, Linkedin, Twitter, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 
 const skills = [
@@ -52,10 +52,11 @@ const skills = [
 ];
 
 export default function Skills() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isDark, setIsDark] = useState(true);
-
+ 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -67,112 +68,74 @@ export default function Skills() {
 
   return (
     <>
-    {/* Navbar */}
-    <header className="fixed top-0 left-0 w-full z-20 bg-black bg-opacity-70 shadow-lg backdrop-blur-sm">
-    <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      {/* Logo and Name */}
-      <a className="flex title-font font-medium items-center text-white">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-12 h-12"
-          viewBox="0 0 100 100"
-        >
-          <defs>
-            <linearGradient id="logoGradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#4B5563" />
-              <stop offset="100%" stopColor="#9CA3AF" />
-            </linearGradient>
-          </defs>
-          <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" />
-          <text
-            x="50%"
-            y="58%"
-            textAnchor="middle"
-            fill="white"
-            fontSize="32"
-            fontFamily="sans-serif"
-            fontWeight="bold"
-          >
-            FM
-          </text>
-        </svg>
-        <span className="ml-3 text-xl">Faria Mustaqim</span>
-      </a>
-      
-      {/* Navigation Links */}
-      <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center space-x-6">
-      <Link href="/component/front" className="hover:text-indigo-400 text-white">
-          Home
+     <header className="fixed top-0 left-0 w-full z-50 bg-black/70 shadow-lg backdrop-blur-sm">
+      <div className="container mx-auto flex items-center justify-between p-5">
+        {/* Logo */}
+        <Link href="/" className="flex items-center text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="logoGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#4B5563" />
+                <stop offset="100%" stopColor="#9CA3AF" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" />
+            <text x="50%" y="58%" textAnchor="middle" fill="white" fontSize="32" fontFamily="sans-serif" fontWeight="bold">FM</text>
+          </svg>
+          <span className="ml-3 text-xl">Faria Mustaqim</span>
         </Link>
-        <Link href="/component/about" className="hover:text-indigo-400 text-white">
-          About
-        </Link>
-        <Link href="/component/skills" className="hover:text-indigo-400 text-white">
-          Skills
-        </Link>
-        <Link href="/component/projects" className="hover:text-indigo-400 text-white">
-          Projects
-        </Link>
-        <Link href="/component/contact" className="hover:text-indigo-400 text-white">
-          Contact
-        </Link>
-      </nav>
 
-      {/* Theme Toggle and Social Icons with better spacing */}
-      <div className="flex items-center gap-6 ml-8">
-        {/* Theme Toggle with distinct styling */}
-        <motion.button
-          onClick={() => setIsDark(!isDark)}
-          className={`flex items-center justify-center w-10 h-10 rounded-full ${
-            isDark 
-              ? 'bg-white/10 hover:bg-white/20' 
-              : 'bg-gray-800 hover:bg-gray-700'
-          } transition-all duration-300 border-2 ${
-            isDark ? 'border-white/20' : 'border-gray-700'
-          }`}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          {isDark ? (
-            <Sun size={18} className="text-white" />
-          ) : (
-            <Moon size={18} className="text-white" />
-          )}
-        </motion.button>
+        {/* Hamburger Menu Button (Mobile) */}
+        <div className="md:hidden flex items-center gap-4">
+          <motion.button
+            onClick={() => setIsDark(!isDark)}
+            aria-label="Toggle theme"
+            className={`w-10 h-10 flex items-center justify-center rounded-full transition-colors border ${
+              isDark ? 'bg-white/10 border-white/20 hover:bg-white/20' : 'bg-gray-800 border-gray-700 hover:bg-gray-700'
+            }`}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {isDark ? <Sun size={18} className="text-white" /> : <Moon size={18} className="text-white" />}
+          </motion.button>
 
-        {/* Divider */}
-        <div className={`h-8 w-px ${isDark ? 'bg-white/20' : 'bg-gray-700'}`}></div>
-
-        {/* Social Icons */}
-        <div className="flex items-center gap-4">
-          <a
-            href="https://github.com/Zaibunis"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors"
-          >
-            <Github size={20} className="text-white" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/faria-mustaqeem-3367b5301/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors"
-          >
-            <Linkedin size={20} className="text-white" />
-          </a>
-          <a
-            href="https://x.com/Faria1539114"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors"
-          >
-            <Twitter size={20} className="text-white" />
-          </a>
+          <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none">
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
+
+        {/* Nav Links (Desktop) */}
+        <nav className="hidden md:flex items-center space-x-6 text-white">
+          <Link href="/component/front" className="hover:text-indigo-400">Home</Link>
+          <Link href="/component/about" className="hover:text-indigo-400">About</Link>
+          <Link href="/component/skills" className="hover:text-indigo-400">Skills</Link>
+          <Link href="/component/projects" className="hover:text-indigo-400">Projects</Link>
+          <Link href="/component/contact" className="hover:text-indigo-400">Contact</Link>
+          <motion.button
+            onClick={() => setIsDark(!isDark)}
+            className={`ml-4 w-10 h-10 flex items-center justify-center rounded-full transition-colors border ${
+              isDark ? 'bg-white/10 border-white/20 hover:bg-white/20' : 'bg-gray-800 border-gray-700 hover:bg-gray-700'
+            }`}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {isDark ? <Sun size={18} className="text-white" /> : <Moon size={18} className="text-white" />}
+          </motion.button>
+        </nav>
       </div>
-    </div>
-  </header>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-black/90 backdrop-blur p-5 space-y-4 text-center text-white">
+          <Link href="/component/front" onClick={() => setIsOpen(false)} className="block hover:text-indigo-400">Home</Link>
+          <Link href="/component/about" onClick={() => setIsOpen(false)} className="block hover:text-indigo-400">About</Link>
+          <Link href="/component/skills" onClick={() => setIsOpen(false)} className="block hover:text-indigo-400">Skills</Link>
+          <Link href="/component/projects" onClick={() => setIsOpen(false)} className="block hover:text-indigo-400">Projects</Link>
+          <Link href="/component/contact" onClick={() => setIsOpen(false)} className="block hover:text-indigo-400">Contact</Link>
+        </div>
+      )}
+    </header>
+
     {/* Animated Background Elements */}
     <div className="absolute inset-0 overflow-hidden opacity-40">
           <div className={`absolute top-0 left-0 w-96 h-96 rounded-full mix-blend-screen filter blur-3xl animate-blob ${
