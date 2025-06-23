@@ -316,18 +316,22 @@ export default function Contact() {
                   </div>
                 </button>
 
-                {/* Status Messages */}
-                {status === 'success' && (
-                  <div className="text-green-400 text-center mt-4 font-medium">
-                    Message sent successfully! ✨
-                  </div>
-                )}
-                {status === 'error' && (
-                  <div className="text-red-400 text-center mt-4 font-medium">
-                    Failed to send message. Please try again.
-                  </div>
-                )}
-              </div>
+             {/* Status Messages */}
+{status === 'success' && (
+  <div className="mt-4 text-center">
+    <p className="bg-black text-white border border-white/20 px-4 py-3 rounded-md font-medium inline-block">
+      Message sent successfully.
+    </p>
+  </div>
+)}
+{status === 'error' && (
+  <div className="mt-4 text-center">
+    <p className="bg-black text-white border border-white/20 px-4 py-3 rounded-md font-medium inline-block">
+      Failed to send message. Please try again.
+    </p>
+  </div>
+)}
+</div>
             </form>
           </div>
         </div>
