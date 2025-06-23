@@ -174,9 +174,10 @@ export default function Skills() {
       {/* Content */}
       <div className="relative z-10 p-10">
       <motion.h1 
-          className={`text-7xl mt-20 font-bold mb-16 text-center ${
-            isDark ? 'text-white' : 'text-black'
-          }`}
+        className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-20 font-bold mb-16 text-center ${
+  isDark ? 'text-white' : 'text-black'
+}`}
+
           initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, type: "spring" }}

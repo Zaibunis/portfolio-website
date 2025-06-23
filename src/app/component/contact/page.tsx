@@ -15,31 +15,26 @@ export default function Contact() {
     message: ''
   });
   const [status, setStatus] = useState('');
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
 
+    const form = new FormData();
+    form.append('name', formData.name);
+    form.append('email', formData.email);
+    form.append('message', formData.message);
+    form.append('_subject', 'New Contact Form Submission');
+    form.append('_template', 'table');
+    form.append('_captcha', 'false');
+    form.append('_autoresponse', 'Thank you for contacting me! I will reply soon.');
+
     try {
-      const response = await fetch('https://formsubmit.co/ajax/fariamustaqim@gmail.com', {
+      const response = await fetch('https://formsubmit.co/56bfe3c8dc7e27c91310ebff7098c7cc', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          _subject: 'New Contact Form Submission',
-          _template: 'table',
-          _captcha: false
-        })
+        body: form
       });
 
-      const result = await response.json();
-      
-      if (result.success) {
+      if (response.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
@@ -58,6 +53,8 @@ export default function Contact() {
     });
   };
 
+
+  
   return (
     <div className={`min-h-screen ${isDark ? 'bg-black' : 'bg-white'} transition-colors duration-500`}>
     <header className="fixed top-0 left-0 w-full z-50 bg-black/70 shadow-lg backdrop-blur-sm">
